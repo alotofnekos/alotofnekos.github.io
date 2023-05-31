@@ -3,10 +3,11 @@ document.getElementById("battleForm").addEventListener("submit", function(event)
 
       // Retrieve form values
       var baseDef = parseInt(document.getElementById("baseDef").value);
-      var evsDef = parseInt(document.getElementById("evsDef").value);
+      var evsDefElement = document.getElementById("evsDef");
+      var evsDef = parseInt(evsDefElement.value);
       if (evsDef > 255) {
             evsDef = 255;
-            document.getElementById("evsDef").value = evsDef;
+            evsDefElement.value = evsDef; // Update the input field with the clamped value
       }
       var natureElement = document.querySelector('input[name="nature"]:checked');
       var nature = parseFloat(natureElement.value);
