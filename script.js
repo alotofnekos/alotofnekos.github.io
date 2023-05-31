@@ -1,27 +1,39 @@
 document.getElementById("evsDef").addEventListener("input", function() {
-            var evsDefElement = document.getElementById("evsDef");
-            var evsDef = parseInt(evsDefElement.value);
-            if (evsDef > 252) {
-                  evsDef = 252;
-                  evsDefElement.value = evsDef; // Update the input field with the clamped value
-            }
+  var evsDefElement = document.getElementById("evsDef");
+  var evsDef = parseInt(evsDefElement.value);
+  if (evsDef > 252) {
+    evsDef = 252;
+    evsDefElement.value = evsDef; // Update the input field with the clamped value
+  } else if (evsDef < 0) {
+    evsDef = 0;
+    evsDefElement.value = evsDef; // Update the input field with the clamped value
+  }
 });
-document.getElementById("evsHP").addEventListener("input", function() {
-            var evsHPElement = document.getElementById("evsHP");
-            var evsHP = parseInt(evsHPElement.value);
-            if (evsHP > 252) {
-                  evsHP = 252;
-                  evsHPElement.value = evsHP; // Update the input field with the clamped value
-            }
-});
+
 document.getElementById("evsAtk").addEventListener("input", function() {
-            var evsAtkElement = document.getElementById("evsAtk");
-            var evsAtk = parseInt(evsAtkElement.value);
-            if (evsAtk > 252) {
-                  evsAtk = 252;
-                  evsAtkElement.value = evsAtk; // Update the input field with the clamped value
-            }
+  var evsAtkElement = document.getElementById("evsAtk");
+  var evsAtk = parseInt(evsAtkElement.value);
+  if (evsAtk > 252) {
+    evsAtk = 252;
+    evsAtkElement.value = evsAtk; // Update the input field with the clamped value
+  } else if (evsAtk < 0) {
+    evsAtk = 0;
+    evsAtkElement.value = evsAtk; // Update the input field with the clamped value
+  }
 });
+
+document.getElementById("evsHP").addEventListener("input", function() {
+  var evsHPElement = document.getElementById("evsHP");
+  var evsHP = parseInt(evsHPElement.value);
+  if (evsHP > 252) {
+    evsHP = 252;
+    evsHPElement.value = evsHP; // Update the input field with the clamped value
+  } else if (evsHP < 0) {
+    evsHP = 0;
+    evsHPElement.value = evsHP; // Update the input field with the clamped value
+  }
+});
+
 document.getElementById("battleForm").addEventListener("submit", function(event) {
             event.preventDefault();
             // Retrieve form values
