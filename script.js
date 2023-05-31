@@ -4,6 +4,9 @@ document.getElementById("battleForm").addEventListener("submit", function(event)
       // Retrieve form values
       var baseDef = parseInt(document.getElementById("baseDef").value);
       var evsDef = parseInt(document.getElementById("evsDef").value);
+      if (evsDef > 255) {
+            evsDef = 255;
+      }
       var nature = parseFloat(document.getElementById("nature").value);
       var baseHP = parseInt(document.getElementById("baseHP").value);
       var evsHP = parseInt(document.getElementById("evsHP").value);
