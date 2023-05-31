@@ -1,11 +1,27 @@
 document.getElementById("evsDef").addEventListener("input", function() {
             var evsDefElement = document.getElementById("evsDef");
             var evsDef = parseInt(evsDefElement.value);
-            if (evsDef > 255) {
-                  evsDef = 255;
+            if (evsDef > 252) {
+                  evsDef = 252;
                   evsDefElement.value = evsDef; // Update the input field with the clamped value
             }
-      });
+});
+document.getElementById("evsHP").addEventListener("input", function() {
+            var evsHPElement = document.getElementById("evsHP");
+            var evsHP = parseInt(evsHPElement.value);
+            if (evsHP > 252) {
+                  evsHP = 252;
+                  evsHPElement.value = evsHP; // Update the input field with the clamped value
+            }
+});
+document.getElementById("evsAtk").addEventListener("input", function() {
+            var evsAtkElement = document.getElementById("evsAtk");
+            var evsAtk = parseInt(evsAtkElement.value);
+            if (evsAtk > 252) {
+                  evsAtk = 252;
+                  evsAtkElement.value = evsAtk; // Update the input field with the clamped value
+            }
+});
 document.getElementById("battleForm").addEventListener("submit", function(event) {
       event.preventDefault();
 
