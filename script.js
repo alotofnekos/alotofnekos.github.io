@@ -8,7 +8,8 @@ document.getElementById("battleForm").addEventListener("submit", function(event)
             evsDef = 255;
             document.getElementById("evsDef").value = evsDef;
       }
-      var nature = parseFloat(document.getElementById("nature").value);
+      var natureElement = document.querySelector('input[name="nature"]:checked');
+      var nature = parseFloat(natureElement.value);
       var baseHP = parseInt(document.getElementById("baseHP").value);
       var evsHP = parseInt(document.getElementById("evsHP").value);
       var baseAtk = parseInt(document.getElementById("baseAtk").value);
