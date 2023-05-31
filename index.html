@@ -22,42 +22,63 @@
 		</header>
 		<form id="battleForm">
 			<label for="baseDef">Enter the base Def:</label>
-			<input type="number" id="baseDef" required="">
+			<input type="number" id="baseDef" min="1" required="">
 			<br>
+			
 			<label for="evsDef">Enter the EVs invested (0-252 only):</label>
-			<input type="number" id="evsDef" required="">
+			<input type="number" id="evsDef" min="0" required="">
 			<label>Does it have a positive nature?</label>
 			<input type="radio" id="natureYes" name="nature" value="1" required>
 			<label for="natureYes">Yes</label>
 			<input type="radio" id="natureNo" name="nature" value="0" required>
 			<label for="natureNo">No</label>
 			<br>
+			
 			<label for="baseHP">Enter the base HP:</label>
-			<input type="number" id="baseHP" required="">
+			<input type="number" id="baseHP" min="1" required="">
 			<br>
+			
 			<label for="evsHP">Enter the EVs invested (0-252 only):</label>
-			<input type="number" id="evsHP" required="">
+			<input type="number" id="evsHP" min="0" required="">
 			<br>
+			
 			<label for="baseAtk">Enter the base Atk of the opposing mon:</label>
-			<input type="number" id="baseAtk" required="">
+			<input type="number" id="baseAtk" min="1" required="">
 			<br>
+			
 			<label for="evsAtk">Enter the EVs invested (0-252 only):</label>
-			<input type="number" id="evsAtk" required="">
+			<input type="number" id="evsAtk" min="0" required="">
+			<label>Does it have a positive nature?</label>
+			<input type="radio" id="natureAtkYes" name="natureAtk" value="1" required>
+			<label for="natureAtkYes">Yes</label>
+			<input type="radio" id="natureAtkNo" name="natureAtk" value="0" required>
+			<label for="natureAtkNo">No</label>
 			<br>
-			<label for="natureAtk">Does it have a positive nature? 1 if yes, 0 if no:</label>
-			<input type="number" id="natureAtk" required="">
-			<br>
-			<label for="stab">Is it STAB? 1 if yes, 0 if no:</label>
-			<input type="number" id="stab" required="">
-			<br>
+			
 			<label for="basePower">Base Power of the Move:</label>
-			<input type="number" id="basePower" required="">
+			<input type="number" id="basePower" min="0" required="">
+			<label for="stab">Is it STAB? 1 if yes, 0 if no:</label>
+			<input type="radio" id="stabYes" name="stab" value="1" required>
+			<label for="stabYes">Yes</label>
+			<input type="radio" id="stabNo" name="stab" value="0" required>
+			<label for="stabNo">No</label>
 			<br>
-			<label for="effectiveness">Effectiveness? 1 for normally effective, 0.5 for resist, 2 for weak, 0.25 for doubly resistant, 4 for doubly weak:</label>
-			<input type="number" id="effectiveness" required="">
+			
+			<label for="effectiveness">Effectiveness?</label><br>
+			<input type="radio" id="r025" name="effectiveness" value="0.25" required>
+			<label for="r025">0.25x (Doubly Resistant)</label><br>
+			<input type="radio" id="r05" name="effectiveness" value="0.5" required>
+			<label for="r05">0.5x (Resist)</label><br>
+			<input type="radio" id="r1" name="effectiveness" value="1" required>
+			<label for="r1">1x (Normally Effective)</label><br>
+			<input type="radio" id="r2" name="effectiveness" value="2" required>
+			<label for="r2">2x (Weak)</label>
+			<input type="radio" id="r4" name="effectiveness" value="4" required>
+			<label for="r4">4x (Doubly Weak)</label>
+
 			<br>
-			<label for="desiredPercentage">Enter the desired percentage of HP to be lost (0-1):</label>
-			<input type="number" id="desiredPercentage" required="">
+			<label for="desiredPercentage">Enter the desired percentage of HP to be lost (0-100):</label>
+			<input type="number" id="desiredPercentage" min="0" required="">
 			<br>
 			<button type="submit">Calculate</button>
 			<main id="content">
