@@ -1,41 +1,78 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-    <head>
-        <!-- Required meta tags -->
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-        <!-- Styles -->
-        <link rel="stylesheet" href="assets/css/style.css">
-
-        <!-- Favicon -->
-        <link rel="icon" href="favicon.png" sizes="32x32">
-        <link rel="icon" href="favicon.png" sizes="192x192">
-        <link rel="apple-touch-icon-precomposed" href="favicon.png">
-        <meta name="msapplication-TileImage" content="favicon.png">
-
-        <title>Title</title>
-    </head>
-    <body>
-        
-        <header>
-          <p>EV Checker soon</p>
-        </header>
-        
-        <main id="content">
-            ...
-        </main>
-        
-        <footer>
-            ...
-        </footer>
-
-        <!-- Scripts -->
-        <script src="assets/js/vendor/jquery-3.6.1.min.js"></script>
-        <script src="assets/js/vendor/bootstrap.bundle.min.js"></script>
-        <script src="assets/js/vendor/lazyload.min.js"></script>
-        <script src="assets/js/vendor/slick.min.js"></script>
-        <script src="assets/js/scripts.js"></script>
-        
-    </body>
+	<head>
+		
+		<!-- Required meta tags -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		
+		<!-- Styles -->
+		<link rel="stylesheet" href="assets/css/style.css">
+		
+		<!-- Favicon -->
+		<link rel="icon" href="favicon.png" sizes="32x32">
+		<link rel="icon" href="favicon.png" sizes="192x192">
+		<link rel="apple-touch-icon-precomposed" href="favicon.png">
+		<meta name="msapplication-TileImage" content="favicon.png">
+		<title>Title</title>
+	</head>
+	<body>
+		<header>
+			<p>EV Checker soon</p>
+		</header>
+		<form id="battleForm">
+			<label for="baseDef">Enter the base Def:</label>
+			<input type="number" id="baseDef" required="">
+			<br>
+			<label for="evsDef">Enter the EVs invested (0-252 only):</label>
+			<input type="number" id="evsDef" required="">
+			<br>
+			<label for="nature">Does it have a positive nature? 1 if yes, 0 if no:</label>
+			<input type="number" id="nature" required="">
+			<br>
+			<label for="baseHP">Enter the base HP:</label>
+			<input type="number" id="baseHP" required="">
+			<br>
+			<label for="evsHP">Enter the EVs invested (0-252 only):</label>
+			<input type="number" id="evsHP" required="">
+			<br>
+			<label for="baseAtk">Enter the base Atk of the opposing mon:</label>
+			<input type="number" id="baseAtk" required="">
+			<br>
+			<label for="evsAtk">Enter the EVs invested (0-252 only):</label>
+			<input type="number" id="evsAtk" required="">
+			<br>
+			<label for="natureAtk">Does it have a positive nature? 1 if yes, 0 if no:</label>
+			<input type="number" id="natureAtk" required="">
+			<br>
+			<label for="stab">Is it STAB? 1 if yes, 0 if no:</label>
+			<input type="number" id="stab" required="">
+			<br>
+			<label for="basePower">Base Power of the Move:</label>
+			<input type="number" id="basePower" required="">
+			<br>
+			<label for="effectiveness">Effectiveness? 1 for normally effective, 0.5 for resist, 2 for weak, 0.25 for doubly resistant, 4 for doubly weak:</label>
+			<input type="number" id="effectiveness" required="">
+			<br>
+			<label for="desiredPercentage">Enter the desired percentage of HP to be lost (0-1):</label>
+			<input type="number" id="desiredPercentage" required="">
+			<br>
+			<button type="submit">Calculate</button>
+			<main id="content">
+				...
+			</main>
+			<footer>
+				...
+			</footer>
+			
+			<!-- Scripts -->
+			<script src="assets/js/vendor/jquery-3.6.1.min.js"></script>
+			<script src="assets/js/vendor/bootstrap.bundle.min.js"></script>
+			<script src="assets/js/vendor/lazyload.min.js"></script>
+			<script src="assets/js/vendor/slick.min.js"></script>
+			<script src="assets/js/scripts.js"></script>
+			<script src="https://unpkg.com/javascript-lp-solver/prod/solver.js"></script>
+			<script type="text/javascript" src="script.js"></script>
+		</form>
+	</body>
 </html>
