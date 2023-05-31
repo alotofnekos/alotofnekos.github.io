@@ -3,12 +3,14 @@ document.getElementById("battleForm").addEventListener("submit", function(event)
 
       // Retrieve form values
       var baseDef = parseInt(document.getElementById("baseDef").value);
-      var evsDefElement = document.getElementById("evsDef");
-      var evsDef = parseInt(evsDefElement.value);
-      if (evsDef > 255) {
-            evsDef = 255;
-            evsDefElement.value = evsDef; // Update the input field with the clamped value
-      }
+      document.getElementById("evsDef").addEventListener("input", function() {
+            var evsDefElement = document.getElementById("evsDef");
+            var evsDef = parseInt(evsDefElement.value);
+            if (evsDef > 255) {
+                  evsDef = 255;
+                  evsDefElement.value = evsDef; // Update the input field with the clamped value
+            }
+      });
       var natureElement = document.querySelector('input[name="nature"]:checked');
       var nature = parseFloat(natureElement.value);
       var baseHP = parseInt(document.getElementById("baseHP").value);
