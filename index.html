@@ -26,9 +26,11 @@
 			<br>
 			<label for="evsDef">Enter the EVs invested (0-252 only):</label>
 			<input type="number" id="evsDef" required="">
-			<br>
-			<label for="nature">Does it have a positive nature? 1 if yes, 0 if no:</label>
-			<input type="number" id="nature" required="">
+			<label>Does it have a positive nature?</label>
+			<input type="radio" id="natureYes" name="nature" value="1" required>
+			<label for="natureYes">Yes</label>
+			<input type="radio" id="natureNo" name="nature" value="0" required>
+			<label for="natureNo">No</label>
 			<br>
 			<label for="baseHP">Enter the base HP:</label>
 			<input type="number" id="baseHP" required="">
