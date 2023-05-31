@@ -21,3 +21,5 @@ f(Def)/f(HP_EVs) <= (Desired_HP_Percentage)
  * f(Def_EVs) is the Def
 
  * f(HP_EVs) is the HP
+
+Planning to use [JWallys](https://github.com/JWally/jsLPSolver) jsLPSolver.
