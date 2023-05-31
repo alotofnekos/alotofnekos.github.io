@@ -1,9 +1,4 @@
-document.getElementById("battleForm").addEventListener("submit", function(event) {
-      event.preventDefault();
-
-      // Retrieve form values
-      var baseDef = parseInt(document.getElementById("baseDef").value);
-      document.getElementById("evsDef").addEventListener("input", function() {
+document.getElementById("evsDef").addEventListener("input", function() {
             var evsDefElement = document.getElementById("evsDef");
             var evsDef = parseInt(evsDefElement.value);
             if (evsDef > 255) {
@@ -11,6 +6,12 @@ document.getElementById("battleForm").addEventListener("submit", function(event)
                   evsDefElement.value = evsDef; // Update the input field with the clamped value
             }
       });
+document.getElementById("battleForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      // Retrieve form values
+      var baseDef = parseInt(document.getElementById("baseDef").value);
+      var evsDef = parseInt(document.getElementById("evsDef").value);
       var natureElement = document.querySelector('input[name="nature"]:checked');
       var nature = parseFloat(natureElement.value);
       var baseHP = parseInt(document.getElementById("baseHP").value);
