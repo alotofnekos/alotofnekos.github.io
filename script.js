@@ -56,5 +56,23 @@ document.getElementById("battleForm").addEventListener("submit", function(event)
             // ...
             // Display or output the results
             // ...
+            /*var solver = require("./src/solver"),
+            model = {
+              "optimize": "profit",
+              "opType": "max",
+              "constraints": {
+                  "wood": {"max": 300},
+                  "labor": {"max": 110},
+                  "storage": {"max": 400}
+              },
+              "variables": {
+                  "table": {"wood": 30, "labor": 5, "profit": 1200, "table": 1, "storage": 30},
+                  "dresser": {"wood": 20, "labor": 10, "profit": 1600, "dresser": 1, "storage": 50}
+              },
+              "ints": {"table": 1, "dresser": 1}
+            }
+            console.log(solver.Solve(model));
+          // {feasible: true, result: 1440-0, table: 8, dresser: 3}
+          */
 });
 
