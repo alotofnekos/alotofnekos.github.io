@@ -51,11 +51,9 @@ document.getElementById("battleForm").addEventListener("submit", function(event)
             var stab = parseInt(stabElement.value);
             var basePower = parseInt(document.getElementById("basePower").value);
             var effectiveness = parseFloat(document.querySelector('input[name="effectiveness"]:checked').value);
-            var desiredPercentage = parseFloat(document.getElementById("desiredPercentage").value);
-            // Perform calculations or further processing here
-            // ...
-            // Display or output the results
-            // ...
+            var desiredDamage = parseFloat(document.getElementById("desiredPercentage").value);
+            var burn = 1;
+            var level = 100;
             function statCalc(Base, Nature, EVs, level) {
               let Stat;
               let intStat;
@@ -87,7 +85,7 @@ document.getElementById("battleForm").addEventListener("submit", function(event)
 
             // Define the number of iterations for gradient descent
             var numIterations = 100;
-
+             
             // Perform gradient descent
             for (var i = 0; i < numIterations; i++) {
               // Calculate the damage using the current values of evsDef and evsHP
@@ -134,24 +132,5 @@ document.getElementById("battleForm").addEventListener("submit", function(event)
                                    "<p>EVs HP: " + evsHP + "</p>" +
                                    "<p>Final Damage: " + finalDamage + "</p>";
             }
-            /*var solver = require("./src/solver"),
-            model = {
-              "optimize": "EVs",
-              "opType": "min",
-              "constraints": {
-                  "DefEVs": {"max": 252},
-                  "HPEVs": {"max": 252},
-                  "TotalEVs": {"max": 508}
-                  "DamagePercent": {"max": desiredPercentage}
-              },
-              "variables": {
-                  "DefEVs": {"wood": 30, "labor": 5, "profit": 1200, "table": 1, "storage": 30},
-                  "HPEVs": {"wood": 20, "labor": 10, "profit": 1600, "dresser": 1, "storage": 50}
-              },
-              "ints": {"DefEVs": 4, "HPEVs": 4}
-            }
-            console.log(solver.Solve(model));
-          // {feasible: true, result: 1440-0, table: 8, dresser: 3}
-          */
 });
 
