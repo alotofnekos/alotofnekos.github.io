@@ -33,6 +33,51 @@ document.getElementById("battleForm").addEventListener("submit", function(event)
   var learningRate = 0.01;
   var numIterations = 100;
 
+  // Perform gradient descent
+  for (var i = 0; i < numIterations; i++) {
+    // Calculate the damage using the current values of evsDef and evsHP
+    var calculatedDamage = dmg(level, basePower, statCalc(baseDef, nature, evsDef, level), statCalc(baseAtk, natureAtk, evsAtk, level), stab, burn, effectiveness);
+
+    // Calculate the loss (discrepancy between desired and calculated damage)
+    var loss = Math.abs(calculatedDamage - desiredDamage);
+
+    // Compute the gradients with respect to evsDef and evsHP
+    var gradientEvsDef = computeGradientEvsDef(evsDef, evsHP, level, basePower, baseAtk, stab, burn, effectiveness, desiredDamage);
+    var gradientEvsHP = computeGradientEvsHP(evsDef, evsHP, level, basePower, baseAtk, stab, burn, effectiveness, desiredDamage);
+
+    // Update the values of evsDef and evsHP using gradient descent
+    evsDef -= learningRate * gradientEvsDef;
+    evsHP -= learningRate * gradientEvsHP;
+  }
+
+  var optimizedEvsDef = Math.round(evsDef); // The optimized value for EVs Def
+  var optimizedEvsHP = Math.round(evsHP); // The optimized value for EVs HP
+  var finalDamage = calculatedDamage; // The final computed damage
+
+  // Call the displayResults() function to update the HTML with the results
+  displayResults(optimizedEvsDef, optimizedEvsHP, finalDamage);
+
+
+
+});
+  function computeGradientEvsDef(evsDef, evsHP, level, basePower, baseAtk, stab, burn, effectiveness, desiredDamage) {
+    var epsilon = 1e-6; // Small value for numerical approximation
+    var loss1 = dmg(level, basePower, statCalc(baseDef, nature, evsDef + epsilon, level), statCalc(baseAtk, natureAtk, evsAtk, level), stab, burn, effectiveness);
+    var loss2 = dmg(level, basePower, statCalc(baseDef, nature, evsDef - epsilon, level), statCalc(baseAtk, natureAtk, evsAtk, level), stab, burn, effectiveness);
+
+    var gradient = (loss1 - loss2) / (2 * epsilon); // Numerical approximation of the gradient
+    return gradient;
+  }
+
+  function computeGradientEvsHP(evsDef, evsHP, level, basePower, baseAtk, stab, burn, effectiveness, desiredDamage) {
+    var epsilon = 1e-6; // Small value for numerical approximation
+    var loss1 = dmg(level, basePower, statCalc(baseDef, nature, evsDef, level), statCalc(baseAtk, natureAtk, evsAtk, level), stab, burn, effectiveness);
+    var loss2 = dmg(level, basePower, statCalc(baseDef, nature, evsDef, level), statCalc(baseAtk, natureAtk, evsAtk, level), stab, burn, effectiveness);
+
+    var gradient = (loss1 - loss2) / (2 * epsilon); // Numerical approximation of the gradient
+
+    return gradient;
+  }
   function statCalc(Base, Nature, EVs, level) {
     let Stat;
     let intStat;
@@ -60,51 +105,6 @@ document.getElementById("battleForm").addEventListener("submit", function(event)
     intDamage = Math.floor(damage);
     return intDamage;
   }
-
-  // Perform gradient descent
-  for (var i = 0; i < numIterations; i++) {
-    // Calculate the damage using the current values of evsDef and evsHP
-    var calculatedDamage = dmg(level, basePower, statCalc(baseDef, nature, evsDef, level), statCalc(baseAtk, natureAtk, evsAtk, level), stab, burn, effectiveness);
-
-    // Calculate the loss (discrepancy between desired and calculated damage)
-    var loss = Math.abs(calculatedDamage - desiredDamage);
-
-    // Compute the gradients with respect to evsDef and evsHP
-    var gradientEvsDef = computeGradientEvsDef(evsDef, evsHP, level, basePower, baseAtk, stab, burn, effectiveness, desiredDamage);
-    var gradientEvsHP = computeGradientEvsHP(evsDef, evsHP, level, basePower, baseAtk, stab, burn, effectiveness, desiredDamage);
-
-    // Update the values of evsDef and evsHP using gradient descent
-    evsDef -= learningRate * gradientEvsDef;
-    evsHP -= learningRate * gradientEvsHP;
-  }
-
-  var optimizedEvsDef = Math.round(evsDef); // The optimized value for EVs Def
-  var optimizedEvsHP = Math.round(evsHP); // The optimized value for EVs HP
-  var finalDamage = calculatedDamage; // The final computed damage
-
-  // Call the displayResults() function to update the HTML with the results
-  displayResults(optimizedEvsDef, optimizedEvsHP, finalDamage);
-
-  function computeGradientEvsDef(evsDef, evsHP, level, basePower, baseAtk, stab, burn, effectiveness, desiredDamage) {
-    var epsilon = 1e-6; // Small value for numerical approximation
-    var loss1 = dmg(level, basePower, statCalc(baseDef, nature, evsDef + epsilon, level), statCalc(baseAtk, natureAtk, evsAtk, level), stab, burn, effectiveness);
-    var loss2 = dmg(level, basePower, statCalc(baseDef, nature, evsDef - epsilon, level), statCalc(baseAtk, natureAtk, evsAtk, level), stab, burn, effectiveness);
-
-    var gradient = (loss1 - loss2) / (2 * epsilon); // Numerical approximation of the gradient
-    return gradient;
-  }
-
-  function computeGradientEvsHP(evsDef, evsHP, level, basePower, baseAtk, stab, burn, effectiveness, desiredDamage) {
-    var epsilon = 1e-6; // Small value for numerical approximation
-    var loss1 = dmg(level, basePower, statCalc(baseDef, nature, evsDef, level), statCalc(baseAtk, natureAtk, evsAtk, level), stab, burn, effectiveness);
-    var loss2 = dmg(level, basePower, statCalc(baseDef, nature, evsDef, level), statCalc(baseAtk, natureAtk, evsAtk, level), stab, burn, effectiveness);
-
-    var gradient = (loss1 - loss2) / (2 * epsilon); // Numerical approximation of the gradient
-
-    return gradient;
-  }
-
-});
 
 function displayResults(evsDef, evsHP, finalDamage) {
   var resultsDiv = document.getElementById("results");
