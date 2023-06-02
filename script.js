@@ -104,13 +104,13 @@ document.getElementById("battleForm").addEventListener("submit", function(event)
     return gradient;
   }
 
-  function displayResults(evsDef, evsHP, finalDamage) {
-    var resultsDiv = document.getElementById("results");
-    resultsDiv.innerHTML = "<p>Optimized EVs:</p>" +
-      "<p>EVs Def: " + evsDef + "</p>" +
-      "<p>EVs HP: " + evsHP + "</p>" +
-      "<p>Final Damage: " + finalDamage + "</p>";
-  }
-
 });
+
+function displayResults(evsDef, evsHP, finalDamage) {
+  var resultsDiv = document.getElementById("results");
+  resultsDiv.innerHTML = "<p>Optimized EVs:</p>" +
+    "<p>EVs Def: " + evsDef + "</p>" +
+    "<p>EVs HP: " + evsHP + "</p>" +
+    "<p>Final Damage: " + finalDamage + "</p>";
+}
 
