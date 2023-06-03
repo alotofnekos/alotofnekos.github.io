@@ -22,4 +22,4 @@ f(Def)/f(HP_EVs) <= (Desired_HP_Percentage)
 
  * f(HP_EVs) is the HP
 
-Planning to use [JWallys](https://github.com/JWally/jsLPSolver) jsLPSolver. [Simplex](https://github.com/srcostenoble/simplex) seems to be a decent alternative due to the complexity of one of the constraints to be used.
+Planning to use [JWallys](https://github.com/JWally/jsLPSolver) jsLPSolver. [Simplex](https://github.com/srcostenoble/simplex) seems to be a decent alternative due to the complexity of one of the constraints to be used. LPmethods.js and LPdefs.js came from them.
