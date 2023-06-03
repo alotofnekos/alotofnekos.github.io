@@ -30,30 +30,16 @@ document.getElementById("battleForm").addEventListener("submit", function(event)
   var desiredDamage = parseFloat(document.getElementById("desiredPercentage").value);
   var burn = 1;
   var level = 100;
-  var solver = require("./src/solver"),
-      model = {
-         "optimize": "EVs",
-         "opType": "min",
-         "constraints": {
-           "DefEVs": {"max": 252},
-           "DefEVs": {"min": 0},
-           "HPEVs": {"max": 252},
-           "HPEVs": {"min": 0},
-           "TotalEVs": {"max": 508},
-           "DamagePercent": {"max": desiredPercentage}
-            },
-         "variables": {
-            "DefEVs": {"wood": 30, "labor": 5, "profit": 1200, "table": 1, "storage": 30},
-            "HPEVs": {"wood": 20, "labor": 10, "profit": 1600, "dresser": 1, "storage": 50}
-            },
-         "ints": {"DefEVs": 4, "HPEVs": 4}
-      }
-      console.log(solver.Solve(model));
-       // {feasible: true, result: 1440-0, table: 8, dresser: 3}
-          */
-      var output = JSON.stringify(solver.Solve(model), null, 2);
+  p = new lpProblem();
+  const problemString = `Maximize p = x + 2y + 3z subject to 
+                          x + y <= 20.5
+                          y + z <= 20.5
+                          x + z <= 30.5
+                          integer x, y, z'
+  p.problemStr = problemString;
+  p.solve();
       var outputElement = document.createElement("pre");
-      outputElement.textContent = output;
+      outputElement.textContent = p.solutionToString();
       document.body.appendChild(outputElement);
 
 });
