@@ -22,6 +22,4 @@ f(Def)/f(HP_EVs) <= (Desired_HP_Percentage)
 
  * f(HP_EVs) is the HP
 
-![Damage Thing](https://wikimedia.org/api/rest_v1/media/math/render/svg/262d19dec35d1c26e71e4482ecbc7361215849ed) "a title")
-
-Planning to use [JWallys](https://github.com/JWally/jsLPSolver) jsLPSolver.
+Planning to use [JWallys](https://github.com/JWally/jsLPSolver) jsLPSolver. [Simplex](https://github.com/srcostenoble/simplex) seems to be a decent alternative due to the complexity of one of the constraints to be used.
