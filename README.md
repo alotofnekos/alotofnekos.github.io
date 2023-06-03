@@ -22,6 +22,6 @@ f(Def)/f(HP_EVs) <= (Desired_HP_Percentage)
 
  * f(HP_EVs) is the HP
 
-![Alt text]([https://assets.digitalocean.com/articles/alligator/boo.svg](https://wikimedia.org/api/rest_v1/media/math/render/svg/262d19dec35d1c26e71e4482ecbc7361215849ed) "a title")
+![Damage Thing](https://wikimedia.org/api/rest_v1/media/math/render/svg/262d19dec35d1c26e71e4482ecbc7361215849ed) "a title")
 
 Planning to use [JWallys](https://github.com/JWally/jsLPSolver) jsLPSolver.
