@@ -30,54 +30,34 @@ document.getElementById("battleForm").addEventListener("submit", function(event)
   var desiredDamage = parseFloat(document.getElementById("desiredPercentage").value);
   var burn = 1;
   var level = 100;
-  var learningRate = 0.01;
-  var numIterations = 100;
-
-  // Perform gradient descent
-  for (var i = 0; i < numIterations; i++) {
-    // Calculate the damage using the current values of evsDef and evsHP
-    var calculatedDamage = dmg(level, basePower, statCalc(baseDef, nature, evsDef, level), statCalc(baseAtk, natureAtk, evsAtk, level), stab, burn, effectiveness);
-
-    // Calculate the loss (discrepancy between desired and calculated damage)
-    var loss = Math.abs(calculatedDamage - desiredDamage);
-
-    // Compute the gradients with respect to evsDef and evsHP
-    var gradientEvsDef = computeGradientEvsDef(evsDef, evsHP, level, basePower, baseAtk, stab, burn, effectiveness, desiredDamage);
-    var gradientEvsHP = computeGradientEvsHP(evsDef, evsHP, level, basePower, baseAtk, stab, burn, effectiveness, desiredDamage);
-
-    // Update the values of evsDef and evsHP using gradient descent
-    evsDef -= learningRate * gradientEvsDef;
-    evsHP -= learningRate * gradientEvsHP;
-  }
-
-  var optimizedEvsDef = Math.round(evsDef); // The optimized value for EVs Def
-  var optimizedEvsHP = Math.round(evsHP); // The optimized value for EVs HP
-  var finalDamage = calculatedDamage; // The final computed damage
-
-  // Call the displayResults() function to update the HTML with the results
-  displayResults(optimizedEvsDef, optimizedEvsHP, finalDamage);
-
-
+  var solver = require("./src/solver"),
+      model = {
+         "optimize": "EVs",
+         "opType": "min",
+         "constraints": {
+           "DefEVs": {"max": 252},
+           "DefEVs": {"min": 0},
+           "HPEVs": {"max": 252},
+           "HPEVs": {"min": 0},
+           "TotalEVs": {"max": 508},
+           "DamagePercent": {"max": desiredPercentage}
+            },
+         "variables": {
+            "DefEVs": {"wood": 30, "labor": 5, "profit": 1200, "table": 1, "storage": 30},
+            "HPEVs": {"wood": 20, "labor": 10, "profit": 1600, "dresser": 1, "storage": 50}
+            },
+         "ints": {"DefEVs": 4, "HPEVs": 4}
+      }
+      console.log(solver.Solve(model));
+       // {feasible: true, result: 1440-0, table: 8, dresser: 3}
+          */
+      var output = JSON.stringify(solver.Solve(model), null, 2);
+      var outputElement = document.createElement("pre");
+      outputElement.textContent = output;
+      document.body.appendChild(outputElement);
 
 });
-  function computeGradientEvsDef(evsDef, evsHP, level, basePower, baseAtk, stab, burn, effectiveness, desiredDamage) {
-    var epsilon = 1e-6; // Small value for numerical approximation
-    var loss1 = dmg(level, basePower, statCalc(baseDef, nature, evsDef + epsilon, level), statCalc(baseAtk, natureAtk, evsAtk, level), stab, burn, effectiveness);
-    var loss2 = dmg(level, basePower, statCalc(baseDef, nature, evsDef - epsilon, level), statCalc(baseAtk, natureAtk, evsAtk, level), stab, burn, effectiveness);
-
-    var gradient = (loss1 - loss2) / (2 * epsilon); // Numerical approximation of the gradient
-    return gradient;
-  }
-
-  function computeGradientEvsHP(evsDef, evsHP, level, basePower, baseAtk, stab, burn, effectiveness, desiredDamage) {
-    var epsilon = 1e-6; // Small value for numerical approximation
-    var loss1 = dmg(level, basePower, statCalc(baseDef, nature, evsDef, level), statCalc(baseAtk, natureAtk, evsAtk, level), stab, burn, effectiveness);
-    var loss2 = dmg(level, basePower, statCalc(baseDef, nature, evsDef, level), statCalc(baseAtk, natureAtk, evsAtk, level), stab, burn, effectiveness);
-
-    var gradient = (loss1 - loss2) / (2 * epsilon); // Numerical approximation of the gradient
-
-    return gradient;
-  }
+/*
   function statCalc(Base, Nature, EVs, level) {
     let Stat;
     let intStat;
@@ -112,5 +92,5 @@ function displayResults(evsDef, evsHP, finalDamage) {
     "<p>EVs Def: " + evsDef + "</p>" +
     "<p>EVs HP: " + evsHP + "</p>" +
     "<p>Final Damage: " + finalDamage + "</p>";
-}
+}*/
 
